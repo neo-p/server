@@ -3,19 +3,13 @@
     "description": "server",
     "type": "library",
     "license": "Apache-2.0",
-    "authors": [
-        {
-            "name": "6xiaowu9",
-            "email": "736518585@qq.com"
-        }
-    ],
     "require": {
         "php": ">=7.0",
-        "neo-p/annotation": "^0.0.1",
-        "neo-p/framework": "^0.0.1",
-        "neo-p/console": "^0.0.1",
-        "neo-p/log": "^0.0.1",
-        "neo-p/di": "^0.0.1"
+        "neo-p/annotation": "^1.0.0",
+        "neo-p/framework": "^1.0.0",
+        "neo-p/console": "^1.0.0",
+        "neo-p/log": "^1.0.0",
+        "neo-p/di": "^1.0.0"
     },
     "autoload": {
         "psr-4": {
