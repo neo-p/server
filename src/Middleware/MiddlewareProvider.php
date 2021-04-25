@@ -2,6 +2,9 @@
 
 namespace NeoP\Server\Middleware;
 
+use NeoP\DI\Container;
+use ReflectionMethod;
+
 class MiddlewareProvider
 {
 
@@ -23,14 +26,16 @@ class MiddlewareProvider
      */
     protected static $serviceMiddlewares = [];
 
-    public static function addMiddleware(string $key, callable $callable): void
+    public static function addMiddleware(string $key, string $class): void
     {
-        self::$middlewares[$key] = $callable;
+        self::$middlewares[$key] = $class;
     }
 
     public static function getMiddleware(string $key): callable
     {
-        return self::$middlewares[$key];
+        $middleware = Container::getDefinition(self::$middlewares[$key]);
+        $method = new ReflectionMethod($middleware, MiddlewareProvider::MIDDLEWARE_HANDLER);
+        return $method->getClosure($middleware);
     }
 
     public static function getMiddlewares(): array
